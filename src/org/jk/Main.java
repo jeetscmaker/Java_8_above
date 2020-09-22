@@ -11,14 +11,16 @@ public class Main {
         users.add(new User(7, "Colin"));
         users.add(new User(11, "Danny"));
         users.add(new User(5, "Kristine"));
+
         System.out.println("Before sorting the list:");
         System.out.println(users);
+
         System.out.println("After sorting the list by Id:");
-        Collections.sort(users, Comparator.comparing(user -> user.getId()));
+        Collections.sort(users, Comparator.comparing(User::getId));
         System.out.println(users);
 
         System.out.println("After sorting the list by name:");
-        Collections.sort(users, Comparator.comparing(user -> user.getName()));
+        Collections.sort(users, Comparator.comparing(User::getName));
         System.out.println(users);
     }
 }

@@ -1,7 +1,5 @@
 package org.jk;
 
-import java.util.Comparator;
-
 public class User {
     private int id;
     private String name;
