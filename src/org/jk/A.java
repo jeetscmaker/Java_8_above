@@ -35,15 +35,16 @@ public class A {
             }
         });
 
-        // This method will return the result
-        // if the task has finished perfectly.
-        // The submit() method returns a
-        // Java Future object which is
-        // used to check when the Runnable
-        // has completed.
-        // As it implements Future,
-        // get() method is called
-        // to get the result
+        /* This method will return the result
+         if the task has finished perfectly.
+         The submit() method returns a
+         Java Future object which is
+         used to check when the Runnable
+         has completed.
+         As it implements Future,
+         get() method is called
+         to get the result
+         */
         System.out.println(obj.get());
     }
 }

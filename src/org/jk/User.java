@@ -1,6 +1,7 @@
 package org.jk;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public class User implements Comparator<User> {
     private int id;
@@ -42,6 +43,21 @@ public class User implements Comparator<User> {
         if (o1.getName().equalsIgnoreCase(o2.getName()))
             return o1.getId() - o2.getId();
         return 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id &&
+                Double.compare(user.salary, salary) == 0 &&
+                Objects.equals(name, user.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, salary);
     }
 
     @Override
