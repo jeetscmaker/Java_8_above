@@ -16,9 +16,13 @@ public class B {
         Map<User, String> map2 = new HashMap<>();
         map.put("name", "John");
         System.out.println("Name: " + map.get(new String("name")));
+
         User u1 = new User(1, "A", 10.0);
         map2.put(u1, "Andrew");
         u1 = new User(2, "B", 20.0);
+        System.out.println("The user is: " + map2.get(u1));
+
+        u1 = new User(1, "A", 10.0);
         System.out.println("The user is: " + map2.get(u1));
     }
 }
