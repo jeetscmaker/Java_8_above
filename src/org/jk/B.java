@@ -1,5 +1,7 @@
 package org.jk;
 
+import java.io.FileNotFoundException;
+import java.nio.file.NoSuchFileException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,5 +26,24 @@ public class B {
 
         u1 = new User(1, "A", 10.0);
         System.out.println("The user is: " + map2.get(u1));
+    }
+}
+
+/* A child class method which overrides a method from parent class, is allowed to throw
+ * an exception which is either equal to or a subclass of the exception which the parent
+ * method throws. For example if m1() in parent throws FileNotFoundException, then m1()
+ * in child class cannot throw 'Exception'. But vice versa is allowed. This rule is applicable
+ * only in case of "Checked Exceptions".
+ * For RuntimeExceptions aka "Unchecked Exceptions", the above rule doesn't apply.
+ */
+class B1 {
+    public void m1() throws Exception {
+        System.out.println("Throwing Exception");
+    }
+}
+
+class B2 extends B1 {
+    public void m1() throws NoSuchFileException {
+        System.out.println("Throwing NoSuchFileException");
     }
 }
