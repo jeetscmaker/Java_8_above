@@ -47,3 +47,5 @@ class B2 extends B1 {
         System.out.println("Throwing NoSuchFileException");
     }
 }
+
+
