@@ -25,8 +25,26 @@ public class Java8Reduce {
                 .reduce(0, (subtotal, element) -> subtotal + element);
         System.out.println("The result of 1st reduce is: " + result);
 
-        /*To make the code even more concise, we can use a method reference, instead of a lambda expression:*/
+        /* To make the code even more concise, we can use a method reference, instead of a lambda expression: */
         result = numbers.stream().reduce(0, Integer::sum);
         System.out.println("The result of 2nd reduce is: " + result);
+
+        /* we can use reduce() on an array of String elements and join them into a single result: */
+        List<String> letters = Arrays.asList("a", "b", "c", "d", "e");
+        String s_result = letters
+                .stream()
+                .reduce("", (partialString, element) -> partialString + element);
+        System.out.println("Result of string concatenation is: " + s_result);
+
+        /**
+         * In addition, we can use reduce() in a parallelized stream
+         * When a stream executes in parallel, the Java runtime splits the stream
+         * into multiple sub-streams. In such cases, we need to use a function to
+         * combine the results of the sub-streams into a single one. This is the role
+         * of the combiner – in the below snippet, it's the Integer::sum method reference.
+         * */
+        List<Integer> ages = Arrays.asList(25, 30, 45, 28, 32);
+        int computedAges = ages.parallelStream().reduce(0, (a, b) -> (a + b), Integer::sum);
+        System.out.println("Computed ages: " + computedAges);
     }
 }
