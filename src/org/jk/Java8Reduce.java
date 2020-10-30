@@ -46,5 +46,21 @@ public class Java8Reduce {
         List<Integer> ages = Arrays.asList(25, 30, 45, 28, 32);
         int computedAges = ages.parallelStream().reduce(0, (a, b) -> (a + b), Integer::sum);
         System.out.println("Computed ages: " + computedAges);
+
+        /* Exception handling in Reducers.. */
+        System.out.println("Division in reduce() gives: " + divideListElements(ages, 2));
+        divideListElements(ages, 0);
+    }
+
+    public static int divideListElements(List<Integer> values, int divider) {
+        return values.stream()
+                .reduce(0, (a, b) -> {
+                    try {
+                        return a / divider + b / divider;
+                    } catch (ArithmeticException e) {
+                        System.out.println("Arithmetic Exception: Division by Zero");
+                    }
+                    return 0;
+                });
     }
 }
