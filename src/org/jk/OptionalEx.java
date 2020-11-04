@@ -1,5 +1,7 @@
 package org.jk;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -41,13 +43,34 @@ public class OptionalEx {
 
         //The orElseThrow() method follows from orElse() and orElseGet() and
         // adds a new approach for handling an absent value.
-        _name = Optional.ofNullable(nullName).orElseThrow(
-                IllegalArgumentException::new);
+//        _name = Optional.ofNullable(nullName).orElseThrow(
+//                IllegalArgumentException::new);
         //Java 10 introduced a simplified no-arg version of orElseThrow() method.
         // In case of an empty Optional it throws a NoSuchElementException:
-        _name = Optional.ofNullable(nullName).orElseThrow();
+//        _name = Optional.ofNullable(nullName).orElseThrow();
 
         // Optional get() method, not advisable to use.
         System.out.println(Optional.of("Jane").get());
+
+        //We can run an inline test on our wrapped value with the filter method.
+        // It takes a predicate as an argument and returns an Optional object.
+        // If the wrapped value passes testing by the predicate, then the Optional is returned as-is.
+        // However, if the predicate returns false, then it will return an empty Optional:
+        Integer year = 2016;
+        Optional<Integer> yearOptional = Optional.of(year);
+        boolean is2016 = yearOptional.filter(y -> y == 2016).isPresent();
+        System.out.println(is2016);
+        boolean is2017 = yearOptional.filter(y -> y == 2017).isPresent();
+        System.out.println(is2017);
+
+        //We can use a similar syntax to transform the Optional value with the map() method:
+        List<String> companyNames = Arrays.asList(
+                "paypal", "oracle", "", "microsoft", "", "apple");
+        Optional<List<String>> listOptional = Optional.of(companyNames);
+
+        int size = listOptional
+                .map(List::size)
+                .orElse(0);
+        System.out.println(size);
     }
 }
