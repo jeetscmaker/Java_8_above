@@ -22,7 +22,21 @@ public class OptionalEx {
         //However, the argument passed to the of() method can't be null. Otherwise,
         // we'll get a NullPointerException:
         name = null;
-        System.out.println(Optional.of(name).isPresent()); // will throw NPE.
+        //System.out.println(Optional.of(name).isPresent()); // will throw NPE.
 
+        //The orElse() method is used to retrieve the value wrapped inside an
+        // Optional instance. It takes one parameter, which acts as a default
+        // value. The orElse() method returns the wrapped value if it's present,
+        // and its argument otherwise:
+        String nullName = null;
+        String _name = Optional.ofNullable(nullName).orElse("john");
+        System.out.println(_name);
+
+        //The orElseGet() method is similar to orElse(). However, instead of
+        // taking a value to return if the Optional value is not present, it
+        // takes a supplier functional interface, which is invoked and returns
+        // the value of the invocation:
+        _name = Optional.ofNullable(nullName).orElseGet(() -> "Bond");
+        System.out.println(_name);
     }
 }
