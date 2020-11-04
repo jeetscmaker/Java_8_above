@@ -38,5 +38,16 @@ public class OptionalEx {
         // the value of the invocation:
         _name = Optional.ofNullable(nullName).orElseGet(() -> "Bond");
         System.out.println(_name);
+
+        //The orElseThrow() method follows from orElse() and orElseGet() and
+        // adds a new approach for handling an absent value.
+        _name = Optional.ofNullable(nullName).orElseThrow(
+                IllegalArgumentException::new);
+        //Java 10 introduced a simplified no-arg version of orElseThrow() method.
+        // In case of an empty Optional it throws a NoSuchElementException:
+        _name = Optional.ofNullable(nullName).orElseThrow();
+
+        // Optional get() method, not advisable to use.
+        System.out.println(Optional.of("Jane").get());
     }
 }
