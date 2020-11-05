@@ -72,5 +72,46 @@ public class OptionalEx {
                 .map(List::size)
                 .orElse(0);
         System.out.println(size);
+
+        // FlatMap() in Optional
+        Person person = new Person("john", 26);
+        Optional<Person> personOptional = Optional.of(person);
+
+        Optional<Optional<String>> nameOptionalWrapper
+                = personOptional.map(Person::getName);
+        Optional<String> nameOptional
+                = nameOptionalWrapper.orElseThrow(IllegalArgumentException::new);
+        String name1 = nameOptional.orElse("");
+        System.out.println(name1);
+
+        name1 = personOptional
+                .flatMap(Person::getName)
+                .orElse("");
+        System.out.println(name1);
     }
+}
+
+class Person {
+    private String name;
+    private int age;
+    private String password;
+
+    Person(String n, int a) {
+        name = n;
+        age = a;
+    }
+
+    public Optional<String> getName() {
+        return Optional.ofNullable(name);
+    }
+
+    public Optional<Integer> getAge() {
+        return Optional.ofNullable(age);
+    }
+
+    public Optional<String> getPassword() {
+        return Optional.ofNullable(password);
+    }
+
+    // normal constructors and setters
 }
