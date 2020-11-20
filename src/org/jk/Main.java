@@ -34,10 +34,16 @@ public class Main {
         Collections.sort(users, Comparator.comparing(User::getName));
         System.out.println(users);
 
+        users = users.stream().sorted(
+                Comparator.comparing(User::getName)
+                        .thenComparing(User::getId))
+                .collect(Collectors.toList());
+        System.out.println("Users after sorting by name and then by id: " + users);
+
         Optional<User> x = users.stream().collect(Collectors.maxBy(Comparator.comparing(User::getSalary)));
         System.out.println(x.get());
         //-----------------------------------------------------------//
         int[][] arr = {{1, 2, 3}, {4, 5, 6, 7}, {8, 9, 10}};
-        Arrays.stream(arr).flatMap(a -> Arrays.stream(a).boxed()).forEach(p->System.out.print(p + " "));
+        Arrays.stream(arr).flatMap(a -> Arrays.stream(a).boxed()).forEach(p -> System.out.print(p + " "));
     }
 }
