@@ -29,10 +29,14 @@ public class DuplicateRemoval {
 
         Set<Student> studentSet = new LinkedHashSet<>(studentList);
         System.out.println(studentSet);
+
+        // sorting of students list
+        Collections.sort(studentList);
+        System.out.println(studentList);
     }
 }
 
-class Student{
+class Student implements Comparable<Student>{
     private String id;
     private String firstName;
     private String lastName;
@@ -76,6 +80,11 @@ class Student{
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Student student) {
+        return this.getId().compareTo(student.getId());
     }
 
     @Override
