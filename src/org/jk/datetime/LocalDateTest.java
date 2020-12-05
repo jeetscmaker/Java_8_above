@@ -5,6 +5,5 @@ package org.jk.datetime;
  * */
 public class LocalDateTest {
     public static void main(String[] args) {
-
     }
 }
