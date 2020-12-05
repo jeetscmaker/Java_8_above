@@ -16,3 +16,22 @@ APIs and let's discuss how the new Java 8 Date and Time APIs address them.
     variety of utility methods that support the commonest operations.
     ZonedDate and Time – Developers had to write additional logic to handle timezone logic with the
     old APIs, whereas with the new APIs, handling of timezone can be done with Local and ZonedDate/Time APIs.
+
+3. Using LocalDate, LocalTime and LocalDateTime
+The most commonly used classes are LocalDate, LocalTime and LocalDateTime. As their names indicate,
+they represent the local Date/Time from the context of the observer.
+These classes are mainly used when timezone are not required to be explicitly specified in the context.
+As part of this section, we will cover the most commonly used APIs.
+
+The LocalDate represents a date in ISO format (yyyy-MM-dd) without time.
+It can be used to store dates like birthdays and paydays.
+An instance of current date can be created from the system clock as below:
+LocalDate localDate = LocalDate.now();
+The LocalDate representing a specific day, month and year can be obtained using the “of” method or
+by using the “parse” method. For example the below code snippets represents the LocalDate for 20 February 2015:
+LocalDate.of(2015, 02, 20);
+LocalDate.parse("2015-02-20");
+The LocalDate provides various utility methods to obtain a variety of information. Let's have a quick
+peek at some of these APIs methods.
+The following code snippet gets the current local date and adds one day:
+LocalDate tomorrow = LocalDate.now().plusDays(1);
