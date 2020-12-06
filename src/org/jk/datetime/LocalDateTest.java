@@ -3,11 +3,12 @@ package org.jk.datetime;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 
 /**
- * Test the features of LocalDate class from Java 8.
+ * Test the features of LocalDate and LocalDateTime class from Java 8.
  */
 public class LocalDateTest {
     public static void main(String[] args) {
@@ -43,5 +44,9 @@ public class LocalDateTest {
                 .with(TemporalAdjusters.firstDayOfMonth());
         System.out.println(beginningOfDay);
         System.out.println(firstDayOfMonth);
+
+        System.out.println(LocalDateTime.now());
+        System.out.println(LocalDateTime.of(2015, Month.FEBRUARY, 20, 06, 30));
+        System.out.println(LocalDateTime.parse("2015-02-20T06:30:00"));
     }
 }
