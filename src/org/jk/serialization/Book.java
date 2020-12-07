@@ -10,7 +10,7 @@ public class Book implements Serializable {
     private String isbn;
     private String author;
     private String publisher;
-    private double price;
+    private transient double price;
 
     public Book() {
     }

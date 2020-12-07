@@ -10,20 +10,16 @@ import java.io.ObjectOutputStream;
  */
 public class SerializationTest {
     public static void main(String[] args) throws Exception {
-        Book b = new Book("abc", "12345", "James", "BB", 50);
+        Book b = new Book("abc", "12345", "James", "BB", 52);
 
-        FileOutputStream fileOutputStream
-                = new FileOutputStream("myBook.ser");
-        ObjectOutputStream objectOutputStream
-                = new ObjectOutputStream(fileOutputStream);
+        FileOutputStream fileOutputStream = new FileOutputStream("myBook.ser");
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(b);
         objectOutputStream.flush();
         objectOutputStream.close();
 
-        FileInputStream fileInputStream
-                = new FileInputStream("myBook.ser");
-        ObjectInputStream objectInputStream
-                = new ObjectInputStream(fileInputStream);
+        FileInputStream fileInputStream = new FileInputStream("myBook.ser");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         Book b2 = (Book) objectInputStream.readObject();
         objectInputStream.close();
 
