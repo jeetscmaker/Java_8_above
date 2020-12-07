@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
  */
 public class SerializationTest {
     public static void main(String[] args) throws Exception {
-        Book b = new Book("abc", "12345", "James", "BB", 52);
+        Book b = new Book("abc", "12345", "James", 52);
 
         FileOutputStream fileOutputStream = new FileOutputStream("myBook.ser");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);

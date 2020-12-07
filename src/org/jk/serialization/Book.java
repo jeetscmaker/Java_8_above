@@ -6,20 +6,20 @@ import java.io.Serializable;
  * We will test various aspects of serialization with the use of  this class
  */
 public class Book implements Serializable {
+    public static int DEFAULT_PRICE = 5;
     private String bookName;
     private String isbn;
     private String author;
-    private String publisher;
+    private final String publisher = "BB";
     private transient double price;
 
     public Book() {
     }
 
-    public Book(String b, String i, String a, String p, double pr) {
+    public Book(String b, String i, String a, double pr) {
         bookName = b;
         isbn = i;
         author = a;
-        publisher = p;
         price = pr;
     }
 
@@ -51,10 +51,6 @@ public class Book implements Serializable {
         return publisher;
     }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
-
     public double getPrice() {
         return price;
     }
@@ -71,6 +67,7 @@ public class Book implements Serializable {
                 ", author='" + author + '\'' +
                 ", publisher='" + publisher + '\'' +
                 ", price=" + price +
+                ", Default price=" + DEFAULT_PRICE +
                 '}';
     }
 }
