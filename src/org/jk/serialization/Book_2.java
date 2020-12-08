@@ -1,16 +1,16 @@
 package org.jk.serialization;
 
+import java.io.Externalizable;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 
 /**
  * @author Jitendra
- * We will test various aspects of serialization with the use of  this class
+ * This class implements Externalizable for customized serialization.
  */
-public class Book implements Serializable {
-    private static final long serialVersionUID = 123L;
+public class Book_2 implements Externalizable {
+    private static final long serialVersionUID = 121L;
 
     public static int DEFAULT_PRICE = 5;
     private String bookName;
@@ -19,10 +19,10 @@ public class Book implements Serializable {
     private final String publisher = "BB";
     private transient double price;
 
-    public Book() {
+    public Book_2() {
     }
 
-    public Book(String b, String i, String a, double pr) {
+    public Book_2(String b, String i, String a, double pr) {
         bookName = b;
         isbn = i;
         author = a;
@@ -67,7 +67,7 @@ public class Book implements Serializable {
 
     @Override
     public String toString() {
-        return "Book{" +
+        return "Book_2{" +
                 "bookName='" + bookName + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", author='" + author + '\'' +
@@ -77,18 +77,20 @@ public class Book implements Serializable {
                 '}';
     }
 
-    private void writeObject(ObjectOutputStream oos) throws IOException {
-        oos.writeObject(bookName);
-        oos.writeObject(isbn);
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeObject(bookName);
+        out.writeObject(isbn);
         /* Even if price is declared as 'transient' but it will be serialized because
          * here we are doing a custom serialization.
          */
-        oos.writeDouble(price);
+        out.writeDouble(price);
     }
 
-    private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
-        bookName = (String) ois.readObject();
-        isbn = (String) ois.readObject();
-        price = ois.readDouble();
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        bookName = (String) in.readObject();
+        isbn = (String) in.readObject();
+        price = in.readDouble();
     }
 }

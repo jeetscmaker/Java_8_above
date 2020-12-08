@@ -29,5 +29,21 @@ public class SerializationTest {
         objectInputStream.close();
 
         System.out.println(b2);
+        /**-----------------------Book_2 Externalizable ---------------**/
+        Book_2 b_2 = new Book_2("abc", "12345", "James", 52);
+
+        FileOutputStream fos = new FileOutputStream("myBook2.ser");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(b_2);
+        oos.flush();
+        oos.close();
+
+        FileInputStream fis = new FileInputStream("myBook2.ser");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        Book_2 b_22 = (Book_2) ois.readObject();
+        ois.close();
+
+        System.out.println(b_22);
+
     }
 }
