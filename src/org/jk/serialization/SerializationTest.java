@@ -6,7 +6,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * A test class for testing java serialization properties
+ * A test class for testing java serialization properties.
+ * Serializability of a class is enabled by the class implementing the java.io.Serializable
+ * interface. Classes that do not implement this interface will not have any of their state
+ * serialized or deserialized. All subtypes of a serializable class are themselves serializable.
+ * The serialization interface has no methods or fields and serves only to identify the
+ * semantics of being serializable.
  */
 public class SerializationTest {
     public static void main(String[] args) throws Exception {

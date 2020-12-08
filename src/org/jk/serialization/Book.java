@@ -1,5 +1,8 @@
 package org.jk.serialization;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
@@ -69,5 +72,15 @@ public class Book implements Serializable {
                 ", price=" + price +
                 ", Default price=" + DEFAULT_PRICE +
                 '}';
+    }
+
+    private void writeObject(ObjectOutputStream oos) throws IOException {
+        oos.writeObject(bookName);
+        oos.writeObject(isbn);
+    }
+
+    private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
+        bookName = (String) ois.readObject();
+        isbn = (String) ois.readObject();
     }
 }
