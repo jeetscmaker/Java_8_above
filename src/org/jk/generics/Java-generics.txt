@@ -31,3 +31,4 @@ type at compile time.
 
 In small programs, this might seem like a trivial addition, however, in larger programs, this can add
 significant robustness and makes the program easier to read.
+
