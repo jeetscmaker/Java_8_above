@@ -1,0 +1,12 @@
+The Need for Generics
+--------------------------
+Let's imagine a scenario where we want to create a list in Java to store Integer; we can be tempted to write:
+
+List list = new LinkedList();
+list.add(new Integer(1));
+Integer i = list.iterator().next();
+
+Surprisingly, the compiler will complain about the last line. It doesn't know what data type is returned.
+The compiler will require an explicit casting:
+
+Integer i = (Integer) list.iterator.next();
