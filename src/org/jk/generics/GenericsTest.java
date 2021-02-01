@@ -20,6 +20,16 @@ public class GenericsTest {
         list2.add(4);
         list2.add(5);
         printList(list2);
+        Number numberInt = 11;
+        Number numberFloat = 11.5f;
+        Number numberDouble = 12.55;
+        Number numberLong = 14L;
+        List<Number> numbers = new ArrayList<>();
+        numbers.add(numberInt);
+        numbers.add(numberFloat);
+        numbers.add(numberDouble);
+        numbers.add(numberLong);
+
     }
 
     private static <T> void printList(List<T> list) {
@@ -28,4 +38,12 @@ public class GenericsTest {
             System.out.print(itr.next() + " ");
         }
     }
+
+    /*private static <Number> void printSum(List<Number> list) {
+        Iterator itr = list.iterator();
+        Number sum = 0;
+        while (itr.hasNext()){
+            sum = sum + itr.next();
+        }
+    }*/
 }
