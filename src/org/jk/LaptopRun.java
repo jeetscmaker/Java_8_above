@@ -22,12 +22,14 @@ public class LaptopRun {
         System.out.println("Before sorting Laptop list is:");
         list.stream().forEach(System.out::println);
         System.out.println("After sorting Laptop list is:");
-        List<Laptop> l = list.stream().sorted().collect(Collectors.toList());
+        List<Laptop> l = list.stream()
+                .sorted(((o1, o2) -> Integer.parseInt(o1.getRam()) - Integer.parseInt(o2.getRam())))
+                .collect(Collectors.toList());
         l.forEach(System.out::println);
     }
 }
 
-class Laptop implements Comparable<Laptop>{
+class Laptop {
     private String ram;
 
     Laptop(String ram) {
@@ -47,12 +49,5 @@ class Laptop implements Comparable<Laptop>{
         return "Laptop{" +
                 "ram='" + ram + '\'' +
                 '}';
-    }
-
-    @Override
-    public int compareTo(Laptop o) {
-        int a = Integer.parseInt(this.getRam()) ;
-        int b = Integer.parseInt(o.getRam()) ;
-        return a-b;
     }
 }
