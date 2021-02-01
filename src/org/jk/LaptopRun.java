@@ -24,7 +24,11 @@ public class LaptopRun {
         list.stream().forEach(System.out::println);
         System.out.println("After sorting Laptop list is:");
         List<Laptop> l = list.stream()
-                .sorted((Comparator.comparingInt(o -> Integer.parseInt(o.getRam()))))
+                .sorted(
+                        Comparator.comparingInt(
+                                o -> Integer.parseInt(o.getRam())
+                        )
+                )
                 .collect(Collectors.toList());
         l.forEach(System.out::println);
     }
