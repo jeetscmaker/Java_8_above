@@ -1,6 +1,7 @@
 package org.jk;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ public class LaptopRun {
         list.stream().forEach(System.out::println);
         System.out.println("After sorting Laptop list is:");
         List<Laptop> l = list.stream()
-                .sorted(((o1, o2) -> Integer.parseInt(o1.getRam()) - Integer.parseInt(o2.getRam())))
+                .sorted((Comparator.comparingInt(o -> Integer.parseInt(o.getRam()))))
                 .collect(Collectors.toList());
         l.forEach(System.out::println);
     }
