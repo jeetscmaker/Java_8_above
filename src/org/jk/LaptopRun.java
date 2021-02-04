@@ -24,7 +24,7 @@ public class LaptopRun {
         list.stream().forEach(System.out::println);
         System.out.println("After sorting Laptop list is:");
         List<Laptop> l = list.stream()
-                .sorted(new MyComparator())
+                .sorted(new LaptopComparator())
                 .collect(Collectors.toList());
         l.forEach(System.out::println);
     }
@@ -50,5 +50,12 @@ class Laptop {
         return "Laptop{" +
                 "ram='" + ram + '\'' +
                 '}';
+    }
+}
+
+class LaptopComparator implements Comparator<Laptop> {
+    @Override
+    public int compare(Laptop l1, Laptop l2) {
+        return Integer.parseInt(l1.getRam()) - Integer.parseInt(l2.getRam());
     }
 }
