@@ -25,5 +25,13 @@ public class Test {
         generatedString = buffer.toString();
 
         System.out.println(generatedString);
+
+        // Using Java 8+ feature for generating random string.
+        generatedString = random.ints(leftLimit, rightLimit + 1)
+                .limit(targetStringLength)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+
+        System.out.println(generatedString);
     }
 }
