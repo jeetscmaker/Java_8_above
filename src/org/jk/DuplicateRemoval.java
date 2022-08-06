@@ -8,9 +8,10 @@ public class DuplicateRemoval {
         List<String> listString = Arrays.asList("Ram", "Shyam", "Mohan", "Sohan", "Ram",
                 "Shyam", "Robert", "Julia", "Shakespeare", "Mohan");
 
-        // Duplicate removal for String (equals, hashcode already implemented for String).
-        // String already implements equals and hashcode methods which provides inbuilt
-        // duplicate removal while adding elements into a set.
+        /* Duplicate removal for String (equals, hashcode already implemented for String).
+         String already implements equals and hashcode methods which provides inbuilt
+         duplicate removal while adding elements into a set. 
+         */
         Set<String> setString = new HashSet<>(listString);
         System.out.println(setString);
 
