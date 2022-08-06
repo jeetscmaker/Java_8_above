@@ -30,6 +30,10 @@ public class DuplicateRemoval {
         System.out.println("=============AFTER JAVA 8 DISTINCT KEYWORD =========================");
         var list3 = list2.stream().distinct().collect(Collectors.toList());
         System.out.println(list3);
+        // Show only 3 records in the list
+        var list4 = list2.stream().distinct().limit(3).collect(Collectors.toList());
+        System.out.println("============== Only 3 Elements ===================");
+        System.out.println(list4);
     }
 
 	private static List<Student> getStudentList() {
