@@ -1,0 +1,56 @@
+1. Overview
+Java 8 introduced new APIs for Date and Time to address the shortcomings of the older
+java.util.Date and java.util.Calendar.
+
+As part of this article, let's start with the issues in the existing Date and Calendar
+APIs and let's discuss how the new Java 8 Date and Time APIs address them.
+
+2. Issues with the Existing Date/Time APIs
+    Thread Safety – The Date and Calendar classes are not thread safe, leaving developers to
+    deal with the headache of hard to debug concurrency issues and to write additional code to
+    handle thread safety. On the contrary the new Date and Time APIs introduced in Java 8 are
+    immutable and thread safe, thus taking that concurrency headache away from developers.
+    APIs Design and Ease of Understanding – The Date and Calendar APIs are poorly designed with
+    inadequate methods to perform day-to-day operations. The new Date/Time APIs is ISO centric
+    and follows consistent domain models for date, time, duration and periods. There are a wide
+    variety of utility methods that support the commonest operations.
+    ZonedDate and Time – Developers had to write additional logic to handle timezone logic with the
+    old APIs, whereas with the new APIs, handling of timezone can be done with Local and ZonedDate/Time APIs.
+
+3. Using LocalDate, LocalTime and LocalDateTime
+The most commonly used classes are LocalDate, LocalTime and LocalDateTime. As their names indicate,
+they represent the local Date/Time from the context of the observer.
+These classes are mainly used when timezone are not required to be explicitly specified in the context.
+As part of this section, we will cover the most commonly used APIs.
+
+The LocalDate represents a date in ISO format (yyyy-MM-dd) without time.
+It can be used to store dates like birthdays and paydays.
+An instance of current date can be created from the system clock as below:
+    LocalDate localDate = LocalDate.now();
+The LocalDate representing a specific day, month and year can be obtained using the “of” method or
+by using the “parse” method. For example the below code snippets represents the LocalDate for 20 February 2015:
+    LocalDate.of(2015, 02, 20);
+    LocalDate.parse("2015-02-20");
+The LocalDate provides various utility methods to obtain a variety of information. Let's have a quick
+peek at some of these APIs methods.
+The following code snippet gets the current local date and adds one day:
+    LocalDate tomorrow = LocalDate.now().plusDays(1);
+LocalDateTime class:
+--------------------
+The LocalDateTime is used to represent a combination of date and time.
+This is the most commonly used class when we need a combination of date and time. The class
+offers a variety of APIs and we will look at some of the most commonly used ones.
+An instance of LocalDateTime can be obtained from the system clock similar to LocalDate and LocalTime:
+    LocalDateTime.now();
+The below code samples explain how to create an instance using the factory “of” and “parse” methods.
+The result would be a LocalDateTime instance representing 20 February 2015, 06:30 AM:
+    LocalDateTime.of(2015, Month.FEBRUARY, 20, 06, 30);
+    LocalDateTime.parse("2015-02-20T06:30:00");
+There are utility APIs to support addition and subtraction of specific units of time like days, months,
+year and minutes are available. The below code samples demonstrates the usage of “plus” and “minus”
+methods. These APIs behave exactly like their counterparts in LocalDate and LocalTime:
+    localDateTime.plusDays(1);
+    localDateTime.minusHours(2);
+Getter methods are available to extract specific units similar to the date and time classes.
+Given the above instance of LocalDateTime, the below code sample will return the month February:
+    localDateTime.getMonth();
