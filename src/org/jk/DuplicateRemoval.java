@@ -1,6 +1,7 @@
 package org.jk;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class DuplicateRemoval {
     public static void main(String[] args) {
@@ -14,7 +15,25 @@ public class DuplicateRemoval {
         System.out.println(setString);
 
         // Duplicate removal for Student objects.
-        Student s1 = new Student("121", "Rohan", "Roy");
+        List<Student> studentList = getStudentList();
+
+        Set<Student> studentSet = new LinkedHashSet<>(studentList);
+        System.out.println(studentSet);
+
+        // sorting of students list
+        Collections.sort(studentList);
+        System.out.println(studentList);
+        
+        System.out.println("=================================================");
+        List<Student> list2 = getStudentList();
+        System.out.println(list2);
+        System.out.println("=============AFTER JAVA 8 DISTINCT KEYWORD =========================");
+        var list3 = list2.stream().distinct().collect(Collectors.toList());
+        System.out.println(list3);
+    }
+
+	private static List<Student> getStudentList() {
+		Student s1 = new Student("121", "Rohan", "Roy");
         Student s2 = new Student("122", "John", "Dcosta");
         Student s3 = new Student("123", "Robert", "King");
         Student s4 = new Student("124", "Ram", "Kumar");
@@ -30,14 +49,8 @@ public class DuplicateRemoval {
         studentList.add(s5);
         studentList.add(s6);
         studentList.add(s7);
-
-        Set<Student> studentSet = new LinkedHashSet<>(studentList);
-        System.out.println(studentSet);
-
-        // sorting of students list
-        Collections.sort(studentList);
-        System.out.println(studentList);
-    }
+		return studentList;
+	}
 }
 
 class Student implements Comparable<Student>{
